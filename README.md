@@ -6,4 +6,4 @@
 #### 项目创建
 1. 🌈 修改 ***package.json*** 中的name字段为`$repo`
 2. 🌈 修改 ***.github/workflows/deploy.yml*** 中的bucket位置,如非独立仓库,应为`oss://jx3box-www/$repo/`
-3. 🌈 指定 ***.env*** 中的 [**`STATIC_PATH`**](#静态资源路径)
+3. 🌈 指定 ***.env.production*** 中的 [**`STATIC_PATH`**](#静态资源路径)

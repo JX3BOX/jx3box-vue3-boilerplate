@@ -1,27 +1,53 @@
-import { defineConfig,loadEnv } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
-import getStaticPath from './helper/static_path'
+import getStaticPath from "./helper/static_path";
 
 export default ({ command, mode }) => {
-
     return defineConfig({
-    
-        //Define static files path
+
+        // 🌈:cross-origin
+        server: {
+            proxy: {
+                "/api/vip": {
+                    target: "https://pay.jx3box.com",
+                    changeOrigin: true,
+                    // 前端请求路径不变，用于后端灰度测试替换为测试路径
+                    // rewrite: (path) => path.replace(/^\/api/, ""),
+                    // configure: (proxy, options) => {
+                        // proxy 是 'http-proxy' 的实例
+                    // }
+                },
+                "/api/messages": {
+                    target: "https://helper.jx3box.com",
+                    changeOrigin: true,
+                },
+                "/api/cms": {
+                    target: "https://cms.jx3box.com",
+                    changeOrigin: true,
+                },
+                "/api": {
+                    target: "https://next2.jx3box.com",
+                    changeOrigin: true,
+                },
+            },
+        },
+
+        // 📦:CDN
         base: mode == "development" ? "/" : getStaticPath(loadEnv(mode, process.cwd()).VITE_STATIC_PATH),
-    
+
+        // 🌸:alias @ for ./src
         resolve: {
-            // Use @ as ./src in template/css/js
             alias: [{ find: "@", replacement: resolve(__dirname, "./src") }],
         },
-    
+
+        // ❄️:css mixins & global vars
         css: {
             preprocessorOptions: {
-                // scss: {
-                //     additionalData: `$injectedColor: orange;`,
-                // },
+                scss: {
+                    additionalData: `$injectedColor: orange;`,
+                },
                 less: {
-                    // less mixin , please reload serve when these files change
                     globalVars: {
                         hack: `true; 
                         @import "./node_modules/csslab/base.less";
@@ -31,7 +57,8 @@ export default ({ command, mode }) => {
                 },
             },
         },
-    
+
+        // 🍬:loaders
         plugins: [vue()],
     });
-}
+};
