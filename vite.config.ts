@@ -6,6 +6,16 @@ import getStaticPath from "./helper/static_path";
 export default ({ command, mode }) => {
     return defineConfig({
 
+        // 🐳:multiple pages
+        build: {
+            rollupOptions: {
+                input: {
+                    main: resolve(__dirname, "index.html"),
+                    subpage: resolve(__dirname, "subpage/index.html"),
+                },
+            },
+        },
+
         // 🌈:cross-origin
         server: {
             proxy: {
@@ -15,7 +25,7 @@ export default ({ command, mode }) => {
                     // 前端请求路径不变，用于后端灰度测试替换为测试路径
                     // rewrite: (path) => path.replace(/^\/api/, ""),
                     // configure: (proxy, options) => {
-                        // proxy 是 'http-proxy' 的实例
+                    // proxy 是 'http-proxy' 的实例
                     // }
                 },
                 "/api/messages": {
