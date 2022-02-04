@@ -1,27 +1,36 @@
+<script setup lang="ts">
+import HelloWorld from "@/components/HelloWorld.vue";
+
+import { provide, reactive, computed } from "vue";
+import { useHead } from "@vueuse/head";
+import { title, keys, desc } from "../setting.json";
+const SEO = reactive({
+    title: title,
+    description: desc,
+    keywords: keys,
+});
+
+useHead({
+    title: computed(() => SEO.title),
+    meta: [
+        {
+            name: `description`,
+            content: computed(() => SEO.description),
+        },
+        {
+            name: `keywords`,
+            content: computed(() => SEO.keywords),
+        },
+    ],
+});
+
+provide("SEO", SEO);
+</script>
+
 <template>
     <img alt="Vue logo" src="@/assets/img/logo.png" />
-    <!-- <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" /> -->
+    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
-
-<script lang="ts">
-export default {
-   name : 'Default',
-   props:[],
-   components : {},
-   data : function(){
-       return {
-
-       }
-   },
-   computed:{},
-   watch:{},
-   methods:{},
-   filters:{},
-   created:function(){},
-   mounted:function(){
-   },
-}
-</script>
 
 <style lang="less">
 @import "@/assets/css/app.less";
