@@ -32,10 +32,11 @@ const count = ref(0);
 </template>
 
 <script lang="ts">
+import { getBox } from "@/service/demo.js";
 export default {
     name: "HelloWorld",
     props: [],
-    inject : ['SEO'],
+    inject: ["SEO"],
     components: {},
     data: function () {
         return {};
@@ -43,15 +44,18 @@ export default {
     computed: {},
     watch: {},
     methods: {
-        doSomething : function (){
-            this.count++
-            this.SEO.title = 'Hello!'
-        }
+        doSomething: function () {
+            this.count++;
+            this.SEO.title = "Hello!";
+        },
     },
     filters: {},
     created: function () {},
     mounted: function () {
-        console.log(this.SEO)
+        console.log(this.SEO);
+        getBox().then((res) => {
+            console.log(res.data);
+        });
     },
 };
 </script>
