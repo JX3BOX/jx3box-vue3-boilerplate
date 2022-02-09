@@ -29,7 +29,8 @@ provide("SEO", SEO);
 
 <template>
     <img alt="Vue logo" src="@/assets/img/logo.png" />
-    <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+    <HelloWorld msg="Hello World" />
+    <router-view />
 </template>
 
 <style lang="less">

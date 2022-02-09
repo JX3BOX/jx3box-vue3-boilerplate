@@ -32,7 +32,7 @@ const count = ref(0);
 </template>
 
 <script lang="ts">
-import { getBox } from "@/service/demo.js";
+// import { getBox } from "@/service/demo";
 export default {
     name: "HelloWorld",
     props: [],
@@ -45,17 +45,17 @@ export default {
     watch: {},
     methods: {
         doSomething: function () {
-            this.count++;
-            this.SEO.title = "Hello!";
+            // this.count++;
+            // this.SEO.title = "Hello!";
         },
     },
     filters: {},
     created: function () {},
     mounted: function () {
-        console.log(this.SEO);
-        getBox().then((res) => {
-            console.log(res.data);
-        });
+        // console.log(this.SEO);
+        // getBox().then((res) => {
+            // console.log(res.data);
+        // });
     },
 };
 </script>
