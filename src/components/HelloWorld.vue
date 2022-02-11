@@ -4,6 +4,11 @@ import { ref } from "vue";
 defineProps<{ msg: string }>();
 
 const count = ref(0);
+
+// store
+import demoStore from '@/store/pinia_store'
+const store = demoStore()
+console.log(store.name)
 </script>
 
 <template>

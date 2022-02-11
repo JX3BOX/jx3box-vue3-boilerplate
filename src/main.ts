@@ -11,8 +11,8 @@ app.use(head)
 import router from './router/index';
 app.use(router)
 
-
-
+import store from './store/pinia';
+app.use(store)
 
 // 3.Mount DOM
 app.mount('#app')
