@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { getApi } from "@/service/index";
 export default {
     name: "IndexPage",
     props: [],
@@ -16,11 +17,15 @@ export default {
     },
     computed: {},
     methods: {},
-    created: function () {},
+    created: function () {
+        getApi("params").then((res) => {
+            console.log(res);
+        });
+    },
     components: {},
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
 @import "@/assets/css/index.less";
 </style>

@@ -1,9 +1,6 @@
-// import { $cms } from "@jx3box/jx3box-common/js/https.js";
+import { $cms } from "@jx3box/jx3box-common/js/https_v2.js";
 
-// function getList(){
-//     return $cms().get('/api/cms/news/list')
-// }
+export function getApi(){
+    return $cms().get('/api/path/to')
+}
 
-// export {
-//     getList
-// }

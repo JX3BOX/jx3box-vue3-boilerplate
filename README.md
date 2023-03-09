@@ -2,23 +2,17 @@
 
 ## 初始化
 
--   `package.json`修改 name 字段为项目标识名
+- `package.json`修改 name 字段为项目标识名，如果为npm包请添加@jx3box/前缀。
+- `.github/workflows`修改 $project 为上方项目名，如果为npm包请使用pkg actions方案[workflows](https://github.com/JX3BOX/jx3box-workflows)。
+- `.env`指定静态资源模式，`setting.json`指定静态资源路径
 
-## 静态资源
+## 私有库
 
--   `.env`指定静态资源模式，`setting.json`指定静态资源路径
--   `.github/workflows`指定 oss 路径
--   配置 secrets：`ACCESS_TOKEN`，仓库写+包读取权限
--   配置 secrets：`ACCESSKEY_ID`和`ACCESS_KEY_SECRET`，oss 读写权限
-
-## 私有包
-
--   `.github/workflows`指定包私有域`@org`
--   `.npmrc`修改`@org`为对应的组织名
+- 配置 secrets：`ACCESS_TOKEN`，仓库写+包读取权限
+- 配置 secrets：`ACCESSKEY_ID`和`ACCESS_KEY_SECRET`，oss 读写权限
 
 ## 其它
-
--   public/index.html 添加统计代码
+- 如果为单页，项目SEO信息请编写在`setting.json`中
 
 ## 开发
 

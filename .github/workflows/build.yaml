@@ -22,7 +22,7 @@ jobs:
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-                  BRANCH: dist
+                  BRANCH: gh-pages
                   FOLDER: dist
                   CLEAN: true
 
@@ -32,4 +32,4 @@ jobs:
                   endpoint: "oss-cn-hangzhou.aliyuncs.com"
                   access-key-id: ${{secrets.AccessKey_ID}}
                   access-key-secret: ${{secrets.Access_Key_Secret}}
-            # - run: ossutil cp -rf dist oss://jx3box/static/jcl
+            # - run: ossutil cp -rf dist oss://jx3box/static/$project
