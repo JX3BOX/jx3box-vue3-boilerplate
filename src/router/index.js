@@ -9,8 +9,8 @@ const routes = [{ path: "/", component: Index }];
 
 // 4.Build An Instance
 const router = createRouter({
-    history: createWebHistory(), //history api
-    // base : '/rewrite root',
+    history: createWebHistory('/base/'), //history api
+    // base : '/base',
     routes,
 });
 
